@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <label><img src="html-5.png" width="19px" alt="" /><span>HTML</span></label>
+        <textarea id="html-code" onkeyup="run()" class="editor" placeholder="Enter HTML code here"></textarea>
+        <label><img src="css-3.png" width="19px" alt="" /><span>CSS</span></label>
+        <textarea id="css-code" onkeyup="run()" class="editor" placeholder="Enter CSS code here"></textarea>
+        <label><img src="js.png" width="19px" alt="" /><span>JavaScript</span></label>
+        <textarea id="js-code" onkeyup="run()" class="editor" placeholder="Enter JS code here"></textarea>
+    </div>
+    <div class="right">
+        <label><img src="play.png" width="19px" alt="" /><span>Output</span></label>
+        <iframe id="output"></iframe>
+    </div>
+    </div>
+
+<script>
+    function run() {
+        let htmlCode = document.getElementById("html-code").value;
+        let cssCode = document.getElementById("css-code").value;
+        let jsCode = document.getElementById("js-code").value;
+        let output = document.getElementById("output");
+        output.contentDocument.body.innerHTML = htmlCode +"<style>"+cssCode+"</style>";
+        output.contentWindow.eval(jsCode);
+    }
+</script>
+</body>
+</html>
